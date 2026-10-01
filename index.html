@@ -5,54 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Tools Workshop – 4th October</title>
 <style>
-:root{--bg:#070b22;--card:rgba(10,16,48,.88);--ink:#f4f6ff;--muted:#a6b0d9;--line:#26336f;--red:#e5202f;--blue:#2a4de0}
+:root{color-scheme:dark;--bg:#080d1e;--card:rgba(14,22,48,.84);--ink:#eaf0ff;--muted:#9aa8cc;--line:#26335e;--field:#111b3a;--accent:#7c8cff;--accent-ink:#0a1022;--ok:#2dd4bf;--p1:#7c8cff;--p2:#2dd4bf;--p3:#ffa062}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
-body{background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:24px;min-height:100vh}
+body{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;padding:24px;min-height:100vh}
 #web{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-main{position:relative;z-index:1;width:100%;max-width:560px;background:var(--card);border:2px solid var(--red);border-radius:14px;padding:32px;box-shadow:0 0 0 4px rgba(42,77,224,.35),0 20px 60px rgba(0,0,0,.6)}
-h1{font-family:Impact,"Arial Black",system-ui,sans-serif;font-weight:400;letter-spacing:.03em;font-size:2.6rem;line-height:1.05;margin:0 0 6px;color:var(--red);text-shadow:3px 3px 0 var(--blue)}
-.sub{color:var(--muted);margin:0 0 24px}
+#fps{position:fixed;right:12px;bottom:10px;z-index:2;font-size:.75rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-variant-numeric:tabular-nums}
+main{position:relative;z-index:1;width:100%;max-width:580px;background:var(--card);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+h1{font-family:"Palatino Linotype",Palatino,Georgia,serif;font-size:2.3rem;line-height:1.12;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 22px}
 dl{margin:0;border-top:1px solid var(--line)}
-.row{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
 dt{width:110px;flex:none;color:var(--muted)}
-dd{margin:0;font-weight:600;word-break:break-word}
-a{color:#8fa6ff}
-.join{display:block;text-align:center;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:14px;border-radius:8px;margin:24px 0 8px;border-bottom:4px solid #9c121d}
-.join:hover{filter:brightness(1.12)}
-h2{font-size:1rem;margin:24px 0 10px}
-.cal{display:flex;flex-wrap:wrap;gap:8px}
-.cal a{border:1px solid var(--blue);background:rgba(42,77,224,.18);border-radius:8px;padding:9px 14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.9rem}
-.cal a:hover{border-color:var(--red);background:rgba(229,32,47,.2)}
-a:focus-visible{outline:3px solid #fff;outline-offset:2px}
-@media(max-width:480px){main{padding:22px}.row{flex-direction:column;gap:2px}h1{font-size:2.1rem}}
-
-.row{align-items:center}
-input,textarea{width:100%;font:inherit;font-weight:600;color:var(--ink);background:rgba(42,77,224,.14);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
-textarea{font-weight:400;resize:vertical;min-height:84px}
-input:focus,textarea:focus{outline:2px solid var(--red);border-color:var(--red)}
-input[type=date],input[type=time]{color-scheme:dark}
+dd{margin:0;font-weight:600;word-break:break-word;min-width:0;flex:1}
+a{color:var(--accent)}
+input,textarea,select{width:100%;font:inherit;font-weight:600;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+textarea{font-weight:400;resize:vertical;min-height:96px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);border-color:var(--accent)}
 .half{display:flex;gap:10px;width:100%}
 .hint{color:var(--muted);font-size:.8rem;margin:10px 0 0}
-.cal a[aria-disabled=true]{opacity:.4;pointer-events:none}
-
-.cal{flex-direction:column;flex-wrap:nowrap;gap:10px}
+.join{display:block;text-align:center;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;padding:14px;border-radius:10px;margin:22px 0 8px}
+.join:hover{filter:brightness(1.1)}
+h2{font-size:1rem;margin:22px 0 10px}
+.cal{display:flex;flex-direction:column;gap:10px}
 .crow{display:flex;align-items:center;gap:8px}
 .cname{width:112px;flex:none;font-weight:600;font-size:.9rem}
 .crow input{flex:1;min-width:0;font-size:.78rem;font-weight:400;padding:8px 10px}
-.cal .crow a,.copy{flex:none;font:inherit;font-weight:600;font-size:.85rem;padding:8px 12px;border-radius:8px;cursor:pointer;text-decoration:none}
-.copy{color:#fff;background:var(--red);border:1px solid var(--red)}
-.copy:hover{filter:brightness(1.12)}
-.copy.done{background:#1f9d55;border-color:#1f9d55}
-.copy:focus-visible{outline:3px solid #fff;outline-offset:2px}
-@media(max-width:560px){.crow{flex-wrap:wrap}.cname{width:100%}.crow input{flex:1 1 100%;order:3}}
-select{width:100%;font:inherit;font-weight:600;color:var(--ink);background:rgba(42,77,224,.14);border:1px solid var(--line);border-radius:8px;padding:9px 11px;color-scheme:dark}
-select option{background:#0a1030;color:#f4f6ff}
-select:focus{outline:2px solid var(--red);border-color:var(--red)}
+.crow a,.copy{flex:none;font:inherit;font-weight:600;font-size:.85rem;padding:8px 12px;border-radius:9px;cursor:pointer;text-decoration:none}
+.crow a{color:var(--ink);border:1px solid var(--line);background:var(--field)}
+.crow a:hover{border-color:var(--accent);color:var(--accent)}
+.crow a[aria-disabled=true]{opacity:.4;pointer-events:none}
+.copy{color:var(--accent-ink);background:var(--accent);border:1px solid var(--accent)}
+.copy:hover{filter:brightness(1.1)}
+.copy:disabled{opacity:.4;cursor:default}
+.copy.done{background:var(--ok);border-color:var(--ok)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media(max-width:560px){main{padding:22px}.row{flex-direction:column;align-items:stretch;gap:4px}h1{font-size:1.9rem}.crow{flex-wrap:wrap}.cname{width:100%}.crow input{flex:1 1 100%;order:3}}
 </style>
 </head>
 <body>
 <canvas id="web" aria-hidden="true"></canvas>
+<div id="fps" aria-hidden="true">-- FPS</div>
 <main>
   <h1 id="title">AI Tools Workshop</h1>
   <p class="sub" id="when"></p>
@@ -79,76 +72,65 @@ select:focus{outline:2px solid var(--red);border-color:var(--red)}
   </div>
 </main>
 <script>
+/* Flow-field canvas engine: fixed 60 updates/sec, drawn with requestAnimationFrame */
 (function(){
-  var c=document.getElementById('web'),x=c.getContext('2d'),W,H,D;
+  var c=document.getElementById('web'),x=c.getContext('2d',{alpha:false}),fpsEl=document.getElementById('fps');
+  var W,H,D=1,P=[],bg='#080d1e',cols=['#7c8cff','#2dd4bf','#ffa062'],t=0;
+  var STEP=1000/60,last=performance.now(),acc=0,frames=0,fpsT=last;
+  var mouse={x:-9999,y:-9999};
   var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function size(){D=window.devicePixelRatio||1;W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0);}
-  addEventListener('resize',function(){size();draw(performance.now());});
-  size();
-  function web(cx,cy,R,a0,a1,t,ph){
-    var spokes=9,rings=9,pts=[],i,j;
-    x.strokeStyle='rgba(220,228,255,.55)';x.lineWidth=1;
-    for(i=0;i<=spokes;i++){
-      var a=a0+(a1-a0)*i/spokes;
-      x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.stroke();
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+  function theme(){bg=css('--bg')||bg;cols=[css('--p1')||cols[0],css('--p2')||cols[1],css('--p3')||cols[2]];x.globalAlpha=1;x.fillStyle=bg;x.fillRect(0,0,W,H);}
+  function spawn(){var p={x:Math.random()*W,y:Math.random()*H,c:(Math.random()*3)|0,l:Math.random()*300|0};p.px=p.x;p.py=p.y;return p;}
+  function size(){
+    D=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+    c.width=Math.round(W*D);c.height=Math.round(H*D);x.setTransform(D,0,0,D,0,0);
+    var n=Math.min(280,Math.round(W*H/5200));P=[];for(var i=0;i<n;i++)P.push(spawn());theme();
+  }
+  function field(px,py){return (Math.sin(px*.0032+t*.00035)+Math.cos(py*.0041-t*.00028)+Math.sin((px+py)*.0021+t*.0002))*1.6;}
+  function update(){
+    t+=STEP;
+    for(var i=0;i<P.length;i++){
+      var p=P[i];p.px=p.x;p.py=p.y;
+      var a=field(p.x,p.y);
+      p.x+=Math.cos(a)*1.5;p.y+=Math.sin(a)*1.5;
+      var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;
+      if(d2<24000&&d2>1){var d=Math.sqrt(d2),f=(1-d/155)*3.2;p.x+=(-dy/d)*f+(dx/d)*f*.5;p.y+=(dx/d)*f+(dy/d)*f*.5;}
+      p.l++;
+      if(p.l>420||p.x<-10||p.x>W+10||p.y<-10||p.y>H+10){var q=spawn();p.x=q.x;p.y=q.y;p.px=q.x;p.py=q.y;p.l=0;}
     }
-    x.strokeStyle='rgba(143,166,255,.4)';
-    for(j=1;j<=rings;j++){
-      var r=R*j/rings;
-      x.beginPath();
-      for(i=0;i<=spokes;i++){
-        var a=a0+(a1-a0)*i/spokes,px=cx+Math.cos(a)*r,py=cy+Math.sin(a)*r;
-        if(i==0){x.moveTo(px,py);continue;}
-        var am=a0+(a1-a0)*(i-.5)/spokes,sag=r*.1+Math.sin(t/900+j+ph)*1.5;
-        x.quadraticCurveTo(cx+Math.cos(am)*(r-sag),cy+Math.sin(am)*(r-sag),px,py);
-      }
+  }
+  function render(){
+    x.globalAlpha=.1;x.fillStyle=bg;x.fillRect(0,0,W,H);
+    x.globalAlpha=.75;x.lineWidth=1.3;x.lineCap='round';
+    for(var k=0;k<3;k++){
+      x.strokeStyle=cols[k];x.beginPath();
+      for(var i=0;i<P.length;i++){var p=P[i];if(p.c===k){x.moveTo(p.px,p.py);x.lineTo(p.x,p.y);}}
       x.stroke();
     }
   }
-  function spider(sx,len,t){
-    var y=len;
-    x.strokeStyle='rgba(235,240,255,.8)';x.lineWidth=1.5;
-    x.beginPath();x.moveTo(sx,0);x.lineTo(sx,y);x.stroke();
-    x.save();x.translate(sx,y+16);
-    x.strokeStyle='#e5202f';x.lineWidth=2.5;x.lineCap='round';
-    for(var s=-1;s<=1;s+=2){
-      for(var k=0;k<4;k++){
-        var wig=still?0:Math.sin(t/220+k*1.3)*3,
-            ang=(-.9+k*.55);
-        x.beginPath();x.moveTo(0,0);
-        x.lineTo(s*(14+k*2),ang*14+wig);
-        x.lineTo(s*(22+k*3),ang*22+14+wig);
-        x.stroke();
-      }
-    }
-    x.fillStyle='#e5202f';
-    x.beginPath();x.ellipse(0,5,9,12,0,0,7);x.fill();
-    x.fillStyle='#2a4de0';
-    x.beginPath();x.ellipse(0,-9,6,6,0,0,7);x.fill();
-    x.fillStyle='#fff';
-    x.beginPath();x.ellipse(-2.5,-10,1.8,2.4,0,0,7);x.ellipse(2.5,-10,1.8,2.4,0,0,7);x.fill();
-    x.restore();
+  function frame(now){
+    requestAnimationFrame(frame);
+    var dt=now-last;last=now;if(dt>250)dt=250;
+    acc+=dt;var n=0;
+    while(acc>=STEP-.5&&n<3){update();acc-=STEP;n++;}
+    if(acc>STEP*2)acc=0;
+    if(n){render();frames++;}
+    if(now-fpsT>=500){fpsEl.textContent=Math.round(frames*1000/(now-fpsT))+' FPS';frames=0;fpsT=now;}
   }
-  function draw(t){
-    var g=x.createLinearGradient(0,0,0,H);
-    g.addColorStop(0,'#0b1140');g.addColorStop(1,'#070b22');
-    x.fillStyle=g;x.fillRect(0,0,W,H);
-    var R=Math.min(Math.max(W,H)*.6,620);
-    web(0,0,R,.02,Math.PI/2-.02,t,0);
-    web(W,0,R,Math.PI/2+.02,Math.PI-.02,t,2);
-    web(0,H,R*.7,-Math.PI/2+.02,-.02,t,4);
-    web(W,H,R*.7,Math.PI+.02,Math.PI*1.5-.02,t,6);
-    var len=still?150:130+Math.sin(t/1800)*70;
-    spider(W*.86,len,t);
-    spider(W*.1,still?90:70+Math.sin(t/1400+2)*40,t);
-  }
-  function loop(t){draw(t);requestAnimationFrame(loop);}
-  if(still)draw(0);else requestAnimationFrame(loop);
+  window.addEventListener('resize',function(){size();if(still)paintStill();});
+  window.addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
+  window.addEventListener('pointerleave',function(){mouse.x=mouse.y=-9999;});
+  window.addEventListener('blur',function(){mouse.x=mouse.y=-9999;});
+  function paintStill(){for(var i=0;i<240;i++){update();render();}}
+  size();
+  if(still){fpsEl.textContent='Animation off';paintStill();}
+  else requestAnimationFrame(function(n){last=n;fpsT=n;frame(n);});
 })();
 </script>
 <script>
 (function(){
-  var ids=['topic','date','time','dur','link','wid','desc'],el={},KEY='webinar-fields-v2';
+  var ids=['topic','date','time','dur','link','wid','desc'],el={},KEY='webinar-fields-v3';
   ids.forEach(function(i){el[i]=document.getElementById(i);});
   var DETAILS={
 "AI Tools Workshop":["Create presentations using AI in under 5 min","Analyze data using AI in under 30 min","Code and Debug using AI in under 10 min"],
