@@ -51,7 +51,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   <p class="sub" id="when"></p>
 
   <dl>
-    <div class="row"><dt><label for="topic">Topic</label></dt><dd><select id="topic"><option>AI Tools Workshop</option><option>AI Tools Workshop for Students</option><option>AI Tools Workshop for Business Owners</option><option>AI Tools Workshop for Finance Professionals</option><option>AI Tools Workshop for Tech Professionals</option><option>Build Side Income Using AI</option><option>AI Tools Workshop for Educators</option><option>Claude Powered AI Tools &amp; Side Income Workshop</option><option>UNLOCKING CLAUDE : Advanced AI Tools Session</option></select></dd></div>
+    <div class="row"><dt><label for="topic">Topic</label></dt><dd><select id="topic"><option>AI Tools Workshop by be10X</option><option>AI Tools Workshop for Students by be10X</option><option>AI Tools Workshop for Business Owners by be10X</option><option>AI Tools Workshop for Finance Professionals by be10X</option><option>AI Tools Workshop for Tech Professionals by be10X</option><option>Build Side Income Using AI by be10X</option><option>AI Tools Workshop for Educators by be10X</option><option>Claude Powered AI Tools &amp; Side Income Workshop by be10X</option><option>UNLOCKING CLAUDE : Advanced AI Tools Session by be10X</option></select></dd></div>
     <div class="row"><dt><label for="date">Date</label></dt><dd><input id="date" type="date" value="2026-10-04"></dd></div>
     <div class="row"><dt><label for="time">Time</label></dt><dd class="half"><input id="time" type="time" value="11:00" aria-label="Time"><input id="dur" type="number" min="15" step="15" value="180" aria-label="Duration in minutes" title="Duration in minutes"></dd></div>
     <div class="row"><dt><label for="link">Joining link</label></dt><dd><input id="link" type="url" placeholder="Leave empty for Online Workshop" value="https://zoom.us/webinar/register/WN_Gmczt7n0SM6UBhEwtlSsMA"></dd></div>
@@ -244,18 +244,18 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 </script>
 <script>
 (function(){
-  var ids=['topic','date','time','dur','link','wid','desc'],el={},KEY='webinar-fields-v4';
+  var ids=['topic','date','time','dur','link','wid','desc'],el={},KEY='webinar-fields-v5';
   ids.forEach(function(i){el[i]=document.getElementById(i);});
   var DETAILS={
-"AI Tools Workshop":["Create presentations using AI in under 5 min","Analyze data using AI in under 30 min","Code and Debug using AI in under 10 min"],
-"AI Tools Workshop for Students":["Use AI tools to study smarter and save time.","Learn prompting, research, presentations, and content creation.","Learn how AI skills can help you prepare for high-paying jobs."],
-"AI Tools Workshop for Business Owners":["AI tools to automate and streamline business operations","Using AI for marketing, sales, and customer engagement","Practical AI strategies to improve productivity and business growth"],
-"AI Tools Workshop for Finance Professionals":["Use AI to automate financial analysis, reporting, and repetitive tasks.","Improve forecasting, data insights, and financial decision-making.","This is a practical hands-on session."],
-"AI Tools Workshop for Tech Professionals":["Use AI to automate coding, testing, and repetitive tasks.","Enhance technical skills with practical AI use cases.","Speed up debugging, research, and problem-solving."],
-"Build Side Income Using AI":["Explore side-income opportunities using AI skills.","Learn practical AI tools to earn through freelancing and projects.","Automate side-income tasks to save time and work smarter.","This is a practical hands-on session."],
-"AI Tools Workshop for Educators":["Use AI to simplify lesson planning, research, and content creation.","Improve teaching productivity and create engaging learning experiences.","This is a practical hands-on session."],
-"Claude Powered AI Tools & Side Income Workshop":["Explore side-income opportunities using Claude","Create content and digital assets with Claude","Build practical AI skills to increase earnings","Automate side-income tasks and workflows with Claude"],
-"UNLOCKING CLAUDE : Advanced AI Tools Session":["Master Claude for work & career growth","No prior technical or ai knowledge required","Automate repetitive tasks & save hours every week","Create content, analyse data & solve complex tasks with AI"]};
+"AI Tools Workshop by be10X":["Create presentations using AI in under 5 min","Analyze data using AI in under 30 min","Code and Debug using AI in under 10 min"],
+"AI Tools Workshop for Students by be10X":["Use AI tools to study smarter and save time.","Learn prompting, research, presentations, and content creation.","Learn how AI skills can help you prepare for high-paying jobs."],
+"AI Tools Workshop for Business Owners by be10X":["AI tools to automate and streamline business operations","Using AI for marketing, sales, and customer engagement","Practical AI strategies to improve productivity and business growth"],
+"AI Tools Workshop for Finance Professionals by be10X":["Use AI to automate financial analysis, reporting, and repetitive tasks.","Improve forecasting, data insights, and financial decision-making.","This is a practical hands-on session."],
+"AI Tools Workshop for Tech Professionals by be10X":["Use AI to automate coding, testing, and repetitive tasks.","Enhance technical skills with practical AI use cases.","Speed up debugging, research, and problem-solving."],
+"Build Side Income Using AI by be10X":["Explore side-income opportunities using AI skills.","Learn practical AI tools to earn through freelancing and projects.","Automate side-income tasks to save time and work smarter.","This is a practical hands-on session."],
+"AI Tools Workshop for Educators by be10X":["Use AI to simplify lesson planning, research, and content creation.","Improve teaching productivity and create engaging learning experiences.","This is a practical hands-on session."],
+"Claude Powered AI Tools & Side Income Workshop by be10X":["Explore side-income opportunities using Claude","Create content and digital assets with Claude","Build practical AI skills to increase earnings","Automate side-income tasks and workflows with Claude"],
+"UNLOCKING CLAUDE : Advanced AI Tools Session by be10X":["Master Claude for work & career growth","No prior technical or ai knowledge required","Automate repetitive tasks & save hours every week","Create content, analyse data & solve complex tasks with AI"]};
   function fillDetails(){var b=DETAILS[el.topic.value]||[];el.desc.value=b.map(function(x){return '\u2022 '+x;}).join('\n');}
   
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved)ids.forEach(function(i){if(saved[i]!=null)el[i].value=saved[i];});}catch(e){}
